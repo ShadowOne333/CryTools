@@ -1,11 +1,14 @@
 #!/bin/bash
 
-PROGRAMS=("test_mpeg" "test_adx" "sfdmux")
+PROGRAMS=("csc_video_conv" "test_mpeg" "test_adx" "sfdmux")
 INCLUDES=-I./include
-LIBS="./lib/common.c ./lib/mpeg.c ./lib/utils.c ./lib/adx.c ./lib/sfd.c"
-ARGS="-Qn -O2 -s"
+LIBS=./lib/*
+ARGS="-O2 -Wno-unused-result -Wno-format -Wno-implicit-function-declaration" #-Qns
 
-mkdir bin
+if [[ ! -d bin ]]; then
+	echo Creating /bin/ directory
+	mkdir bin
+fi
 
 for prog in "${PROGRAMS[@]}"
 do
