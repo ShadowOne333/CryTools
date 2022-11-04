@@ -48,7 +48,7 @@ int main(int argc, char** argv)
 				break;
 		}
 		
-		printf("\tftell: %x\n", ftell(sfd));
+		printf("\tftell: %lx\n", ftell(sfd));
 	}
 	
 	fclose(sfd);

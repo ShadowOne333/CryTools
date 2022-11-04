@@ -331,7 +331,7 @@ File_desc* prepare_files(int argc, char** argv, uint8_t* files_amount)
 			
 			printf("\tLength: %lf\n", files_ptr[cur_idx].data.adx.est_length);
 			
-			printf("\tSize: %u\n", files_ptr[cur_idx].data.adx.file_size);
+			printf("\tSize: %llu\n", files_ptr[cur_idx].data.adx.file_size);
 			printf("\tStep: %.15lf\n", files_ptr[cur_idx].scr_step);
 			printf("\tID: %08x\n", files_ptr[cur_idx].stream_id);
 			
@@ -379,10 +379,10 @@ File_desc* prepare_files(int argc, char** argv, uint8_t* files_amount)
 			printf("\tFramerate: %.3lf\n", mpeg1_framerate[m1v.frame_rate]);
 			printf("\tLength: %02u:%02u:%02u.%03u\n", m1v.time_hour, m1v.time_minute, m1v.time_second, m1v.time_milliseconds);
 			printf("\tLength as double: %lf\n", m1v.time_as_double);
-			printf("\tFrames: %u\n", files_ptr[cur_idx].data.m1v.cur_frame);
-			printf("\tLast frame: 0x%x\n", files_ptr[cur_idx].data.m1v.frames_positions[m1v.cur_frame-1]);
+			printf("\tFrames: %llu\n", files_ptr[cur_idx].data.m1v.cur_frame);
+			printf("\tLast frame: 0x%llx\n", files_ptr[cur_idx].data.m1v.frames_positions[m1v.cur_frame-1]);
 			
-			printf("\tSize: %u\n", files_ptr[cur_idx].data.m1v.file_size);
+			printf("\tSize: %llu\n", files_ptr[cur_idx].data.m1v.file_size);
 			printf("\tStep: %.15lf\n", files_ptr[cur_idx].scr_step);
 			printf("\tID: %08x\n", files_ptr[cur_idx].stream_id);
 			

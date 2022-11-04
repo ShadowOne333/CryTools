@@ -1,8 +1,8 @@
 #!/bin/bash
 
 INCLUDES="-I./include"
-ARGS_DEBUG="-flto -g3 -std=c99"
-ARGS_RELEASE="-flto -O3 -s -std=c99"
+ARGS_DEBUG="-flto -g3 -std=c99 -Wno-unused-result -Wno-format -Wno-implicit-function-declaration"
+ARGS_RELEASE="-flto -O3 -s -std=c99 -Wno-unused-result -Wno-format -Wno-implicit-function-declaration"
 ARGS=$ARGS_DEBUG
 
 if [[ ! -d bin ]]; then

@@ -33,8 +33,8 @@ int main(int argc, char** argv)
 		return 0;
 	}*/
 	
-	printf("====Size: %u\n", m1v.file_size);
-	fprintf(flog, "====Size: %u\n", m1v.file_size);
+	printf("====Size: %llu\n", m1v.file_size);
+	fprintf(flog, "====Size: %llu\n", m1v.file_size);
 	
 	m1v.file_pos = 0;
 	
@@ -46,7 +46,7 @@ int main(int argc, char** argv)
 		finished = m1v_next_packet(&m1v);
 		if(finished == 0) break;
 		const uint8_t stream_id = m1v.last_stream_id;
-		fprintf(flog, "==Stream ID: %02x | %x\n", stream_id, m1v.file_pos);
+		fprintf(flog, "==Stream ID: %02x | %llx\n", stream_id, m1v.file_pos);
 		
 		// Parse
 		switch(stream_id)
@@ -95,17 +95,17 @@ int main(int argc, char** argv)
 					fprintf(flog, "%c", m1v.user_data[i]);
 				}
 				fprintf(flog, "\n");
-				fprintf(flog, "\tuser_data_size: %u\n",  m1v.user_data_size);
+				fprintf(flog, "\tuser_data_size: %llu\n",  m1v.user_data_size);
 				break;
 
 			case 0xB5: // Extension
-				fprintf(flog, "\tExtension size: %u\n", finished-4);
+				fprintf(flog, "\tExtension size: %llu\n", finished-4);
 				break;			
 			
 			default:
 				if(m1v_is_slice(stream_id)) // Is slice
 				{
-					fprintf(flog, "\tSlice size: %x\n", m1v.slice_size);
+					fprintf(flog, "\tSlice size: %llx\n", m1v.slice_size);
 				}
 				else
 				{
@@ -128,7 +128,7 @@ int main(int argc, char** argv)
 	for(uint64_t i = 0; i != m1v.cur_frame; ++i)
 	{
 		//printf("[% 4u] 0x%x\n", i, m1v.frames_positions[i]);
-		fprintf(flog, "[% 4u] 0x%x\n", i, m1v.frames_positions[i]);
+		fprintf(flog, "[%4llu] 0x%llx\n", i, m1v.frames_positions[i]);
 	}
 	
 	// Cleanup

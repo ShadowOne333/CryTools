@@ -65,12 +65,12 @@ int main(int argc, char** argv)
 	
 	FILE* yuv_file = fopen(argv[1], "rb");
 	fseek(yuv_file, 0, SEEK_END);
-	const uint64_t yuv_file_size = ftello64(yuv_file); // Files can get bigger than 2GB
+	const uint64_t yuv_file_size = ftell(yuv_file); // Files can get bigger than 2GB
 	fseek(yuv_file, 0, SEEK_SET);
 	
 	FILE* sfd_file = fopen(argv[2], "rb");
 	fseek(sfd_file, 0, SEEK_END);
-	const uint64_t sfd_file_size = ftello64(sfd_file); // Files can get bigger than 2GB
+	const uint64_t sfd_file_size = ftell(sfd_file); // Files can get bigger than 2GB
 	fseek(sfd_file, 0, SEEK_SET);
 	
 	mpeg_frame_s mpeg_frame = {0};
@@ -124,7 +124,7 @@ int main(int argc, char** argv)
 	printf("WIDTH:   %u\n", m1v_info.width);
 	printf("HEIGHT:  %u\n", m1v_info.height);
 	printf("BPF:     %u\n", bytes_per_frame);
-	printf("YUVSIZE: %u\n", yuv_file_size);
+	printf("YUVSIZE: %llu\n", yuv_file_size);
 	printf("FRAMES:  %u\n", frames_total);
 	
 	uint8_t* frame_yuv_types = (uint8_t*)malloc(frames_total);

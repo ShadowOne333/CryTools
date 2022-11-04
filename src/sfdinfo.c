@@ -105,9 +105,9 @@ sfd_streams_u get_sfd_info(FILE* sfdf, mpeg_frame_s* mpeg, uint8_t* stream_ver)
 						for(uint32_t i = 0; i != str.s1.total_streams-1; ++i)
 						{
 							printf("====STREAM [%u]:\n", i+1);
-							printf("out_name: % .8s\n", str.s1.stream_entries[i].audio.out_name);
-							printf("out_ext: % .4s\n", str.s1.stream_entries[i].audio.out_ext);
-							printf("out_date: % .12s\n", str.s1.stream_entries[i].audio.out_date);
+							printf("out_name: %.8s\n", str.s1.stream_entries[i].audio.out_name);
+							printf("out_ext: %.4s\n", str.s1.stream_entries[i].audio.out_ext);
+							printf("out_date: %.12s\n", str.s1.stream_entries[i].audio.out_date);
 							printf("stream_id: %02x\n", str.s1.stream_entries[i].audio.stream_id);
 
 							const uint8_t is_audio = str.s1.stream_entries[i].audio.stream_id >= 0xE0 ? 0 : 1;
